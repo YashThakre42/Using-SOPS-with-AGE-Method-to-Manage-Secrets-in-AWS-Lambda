@@ -8,7 +8,8 @@ Before starting, ensure you have the latest versions of:<br />
 ✅ AWS CLI (for managing AWS resources)<br />
 ✅ Terraform (for infrastructure as code)<br />
 
-Step 2: Project Files & Their Roles
+Step 2: Project Files & Their Roles<br />
+
            **File 1: main.tf **           Stores the username and password in AWS Secrets Manager from secrets.json. It also defines IAM roles and policies for the Lambda function.
 
            **File 2: data.tf**            Reads the encrypted file (secrets.enc.json) that is managed by SOPS.
