@@ -3,10 +3,10 @@
 SOPS using AGE method and read password in AWS lambda function.
 
 Step 1: Install Required Tools
-Before starting, ensure you have the latest versions of:
+Before starting, ensure you have the latest versions of:<br />
 ✅ SOPS (for encrypting and decrypting secrets) <br />
-✅ AWS CLI (for managing AWS resources)
-✅ Terraform (for infrastructure as code)
+✅ AWS CLI (for managing AWS resources)<br />
+✅ Terraform (for infrastructure as code)<br />
 
 Step 2: Project Files & Their Roles
            **File 1: main.tf **           Stores the username and password in AWS Secrets Manager from secrets.json. It also defines IAM roles and policies for the Lambda function.
@@ -37,7 +37,9 @@ Step 3: Encrypt, Decrypt Secrets
 
 Step 4: Deploy & Run Lambda Function
 This will:
+
 ✅ Store the encrypted secrets in AWS Secrets Manager
+
 ✅ Deploy the Lambda function with the necessary permissions
 
 Summary
