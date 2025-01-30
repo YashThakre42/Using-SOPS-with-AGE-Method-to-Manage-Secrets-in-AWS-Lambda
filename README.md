@@ -5,7 +5,9 @@ SOPS using AGE method and read password in AWS lambda function.
 Step 1: Install Required Tools
 Before starting, ensure you have the latest versions of:<br />
 ✅ SOPS (for encrypting and decrypting secrets) <br />
+
 ✅ AWS CLI (for managing AWS resources)<br />
+
 ✅ Terraform (for infrastructure as code)<br />
 
 Step 2: Project Files & Their Roles<br />
