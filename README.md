@@ -1,34 +1,48 @@
-# SOPS_using_AGE_method
+
 
 SOPS using AGE method and read password in AWS lambda function.
 
-Step1.  Installed latest Sops, Aws cli and terraform version version.
+Step 1: Install Required Tools
+Before starting, ensure you have the latest versions of:
+✅ SOPS (for encrypting and decrypting secrets)
+✅ AWS CLI (for managing AWS resources)
+✅ Terraform (for infrastructure as code)
 
-Step2. File 1: main.tf               (Stores username and password into the secret manager from secrets.json, IAM roles and policies for lambda function
+Step 2: Project Files & Their Roles
+           **File 1: main.tf **           Stores the username and password in AWS Secrets Manager from secrets.json. It also defines IAM roles and policies for the Lambda function.
 
-           File 2: data.tf           (This data block accesses the encrypted file (secrets.enc.json) managed by SOPS)
+           **File 2: data.tf**            Reads the encrypted file (secrets.enc.json) that is managed by SOPS.
 
-           File 3: .sops.yaml        (outline a rule set for handling sensitive information)
+           **File 3: .sops.yaml**         Defines rules for handling sensitive information and specifies which encryption keys to use.
 
-           File 4: secrets.enc.json  (SOPS encrypts this file using Age key)
+           **File 4: secrets.enc.json**   Encrypted secrets file (contains sensitive information, encrypted using the AGE key).
 
-           File 5: secrets.dec.json  (serves as a reference for the unencrypted content)
+           **File 5: secrets.dec.json**   Decrypted version of the secrets file, used for reference (not used in production).
 
-           File 6: secrets.json       (username & password)
+           **File 6: secrets.json**       Stores username & password before encryption (this file should not be committed to version control).
 
-           File 7: Lambda_function.py (Retrieves a secret from AWS Secrets Manager and extracts the value of the password field. It also checks for the existence of a specific environment variable and returns its value)
-
-
-
-Step 3: Encrypt, Decrypt using the following commands..
-
-age-keygen -o key.txt
-
-sops --encrypt secrets.enc.json > secrets.json
-
-sops --decrypt secrets.enc.json > secrets.dec.json
+           **File 7: Lambda_function.py** Retrieves the password from AWS Secrets Manager and checks for the existence of an environment variable, returning its value.
 
 
 
-Step 4: Run the lambda function in AWS after Terraform apply, you will able to see the output as a password field and environment variable)
+Step 3: Encrypt, Decrypt Secrets
 
+✅age-keygen -o key.txt
+
+✅sops --encrypt secrets.enc.json > secrets.json
+
+✅sops --decrypt secrets.enc.json > secrets.dec.json
+
+
+
+Step 4: Deploy & Run Lambda Function
+This will:
+✅ Store the encrypted secrets in AWS Secrets Manager
+✅ Deploy the Lambda function with the necessary permissions
+
+Summary
+🔹 SOPS + AGE provides secure encryption for sensitive data.
+🔹 Terraform automates the deployment of AWS resources.
+🔹 AWS Secrets Manager securely stores and retrieves credentials for Lambda.
+
+This setup ensures that passwords and sensitive data remain protected while allowing easy access for applications that need them. 🚀
