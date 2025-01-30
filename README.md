@@ -43,8 +43,12 @@ This will:
 ✅ Deploy the Lambda function with the necessary permissions
 
 Summary
+
 🔹 SOPS + AGE provides secure encryption for sensitive data.
+
 🔹 Terraform automates the deployment of AWS resources.
+
 🔹 AWS Secrets Manager securely stores and retrieves credentials for Lambda.
+
 
 This setup ensures that passwords and sensitive data remain protected while allowing easy access for applications that need them. 🚀
